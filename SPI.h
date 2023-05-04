@@ -19,9 +19,6 @@ extern "C" {
 void SPI1_Config(bool ifMaster);
 void SPI1_Send(char *data);
 char* SPI1_Receive(void);
-void SPI1_Enable(void);
-void SPI1_Disable(void);
-
 #ifdef __cplusplus
 }
 #endif

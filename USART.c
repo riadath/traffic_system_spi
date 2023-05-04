@@ -149,7 +149,6 @@ void UART2_Config(void){
 	USART2->CR1 |= (1<<3); //enable TE for transmitter
 	
     USART2->CR1 |= USART_CR1_RXNEIE;
-    NVIC_SetPriority(USART2_IRQn,1);
     NVIC_EnableIRQ(USART2_IRQn);
 }
 

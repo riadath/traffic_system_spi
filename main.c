@@ -23,6 +23,7 @@ void tim5_delay(uint16_t ms);
 
 
 void USART2_IRQHandler(void);
+void SPI1_IRQHandler(void);
 void getString(void);
 void init(void);
 void mainLoop(void);
@@ -95,6 +96,23 @@ void USART2_IRQHandler(void){
     USART2->CR1 &= ~(USART_CR1_RXNEIE);
     getString();
     USART2->CR1 |= (USART_CR1_RXNEIE);
+}
+
+
+
+
+void SPI1_IRQHandler(void){
+	sendString("IRQ\n");
+//	SPI1->CR1 &= ~SPI_CR2_RXNEIE;
+//	
+//	rcv_str = SPI1_Receive();
+
+//	sendString("RCV ::: ");
+//	sendString(rcv_str);
+//	sendString(" :::\n");
+//	
+//	SPI1->CR1 |= SPI_CR2_RXNEIE;
+	
 }
 
 void init(void){
@@ -180,58 +198,64 @@ void mainLoop(void){
 
 
 
+
+
 int main(void)
 {   
-	uint8_t temp = 0;
-	
-	GPIO_InitTypeDef gpio_config;
+	uint8_t temp = 1;
 	
 	init();
 	SPI1_Config(temp);
-	
-	
-	
-    gpio_config.Pin = GPIO_PIN_9;
-    gpio_config.Mode = GPIO_MODE_OUTPUT_PP;
-    gpio_config.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
-    GPIO_Init(GPIOB,&gpio_config);
+
     
     strcpy(input_buff,"");
     sendString("HELLO I'M IN\n");
-    
 	
-	if(temp){
-		//inside read loop
+    GPIO_InitTypeDef gpio_config;
+	gpio_config.Mode = GPIO_MODE_OUTPUT_PP;
+    gpio_config.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+    gpio_config.Pin = GPIO_PIN_5;
+    GPIO_Init(GPIOB, &gpio_config);
+	
+	if(!temp){
+		
 		sendString("Inside Read Loop\n");
 		while(1){
+//			if(strlen(input_buff) != 0){
+//				sendString("RCV ::: ");
+//				sendString(input_buff);
+//				sendString(" :::\n");
+//				strcpy(input_buff,"");
+//			}
 			rcv_str = SPI1_Receive();
+
 			sendString("RCV ::: ");
 			sendString(rcv_str);
 			sendString(" :::\n");
+			
+//			GPIO_WritePin(GPIOB,5,GPIO_PIN_SET);
+//			ms_delay(500);
+//			GPIO_WritePin(GPIOB,5,GPIO_PIN_RESET);
+//			ms_delay(500);
 		}
-	}else{
-		//inside write loop
+	}
+	else{
+
 		sendString("Inside Write Loop\n");
 		while(1){
+			
 			if(strlen(input_buff) != 0){
+				sendString("TO SEND ::: ");
+				sendString(input_buff);
+				sendString(" :::\n");
 				
 				SPI1_Send(input_buff);
+				
 				strcpy(input_buff,"");
 			}
 		}
 	}
 
-//	while(1){ 
-
-//				
-//		GPIO_WritePin(GPIOB,9,GPIO_PIN_SET);
-//		ms_delay(500);
-//		GPIO_WritePin(GPIOB,9,GPIO_PIN_RESET);
-//		ms_delay(500);
-//	}
-    
-
-   
 }
 
 
