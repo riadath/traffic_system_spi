@@ -93,6 +93,7 @@ void getString(void){
     
 }
 void USART2_IRQHandler(void){
+	
     USART2->CR1 &= ~(USART_CR1_RXNEIE);
     getString();
     USART2->CR1 |= (USART_CR1_RXNEIE);
@@ -101,18 +102,22 @@ void USART2_IRQHandler(void){
 
 
 
-void SPI1_IRQHandler(void){
-	sendString("IRQ\n");
-//	SPI1->CR1 &= ~SPI_CR2_RXNEIE;
-//	
-//	rcv_str = SPI1_Receive();
 
-//	sendString("RCV ::: ");
-//	sendString(rcv_str);
-//	sendString(" :::\n");
-//	
-//	SPI1->CR1 |= SPI_CR2_RXNEIE;
+void SPI1_IRQHandler(void){
 	
+	SPI1->CR2 &= ~SPI_CR2_RXNEIE;
+
+	rcv_str = SPI1_Receive();
+	
+	
+	if(strlen(rcv_str) != 0){
+		sendString("RCV ::: ");
+		sendString(rcv_str);
+		sendString(" :::\n");
+		strcpy(rcv_str,"");
+	}
+	
+	SPI1->CR2 |= SPI_CR2_RXNEIE;
 }
 
 void init(void){
@@ -143,7 +148,7 @@ void init(void){
 	
 
 	//timer start
-	TIM2->CNT = 0;
+//	TIM2->CNT = 0;
 }
 void mainLoop(void){
     while(true){
@@ -202,7 +207,7 @@ void mainLoop(void){
 
 int main(void)
 {   
-	uint8_t temp = 1;
+	uint8_t temp = 0;
 	
 	init();
 	SPI1_Config(temp);
@@ -221,34 +226,25 @@ int main(void)
 		
 		sendString("Inside Read Loop\n");
 		while(1){
-//			if(strlen(input_buff) != 0){
-//				sendString("RCV ::: ");
-//				sendString(input_buff);
-//				sendString(" :::\n");
-//				strcpy(input_buff,"");
-//			}
-			rcv_str = SPI1_Receive();
-
-			sendString("RCV ::: ");
-			sendString(rcv_str);
-			sendString(" :::\n");
 			
-//			GPIO_WritePin(GPIOB,5,GPIO_PIN_SET);
-//			ms_delay(500);
-//			GPIO_WritePin(GPIOB,5,GPIO_PIN_RESET);
-//			ms_delay(500);
+			GPIO_WritePin(GPIOB,5,GPIO_PIN_SET);
+			ms_delay(500);
+			GPIO_WritePin(GPIOB,5,GPIO_PIN_RESET);
+			ms_delay(500);
 		}
 	}
+	
 	else{
 
 		sendString("Inside Write Loop\n");
+
 		while(1){
-			
 			if(strlen(input_buff) != 0){
 				sendString("TO SEND ::: ");
 				sendString(input_buff);
 				sendString(" :::\n");
 				
+				SPI1_Send("#");
 				SPI1_Send(input_buff);
 				
 				strcpy(input_buff,"");

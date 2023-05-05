@@ -49,15 +49,10 @@ void SPI1_Config(bool ifMaster){
 		SPI1->CR1 &= ~SPI_CR1_RXONLY;
 		SPI1->CR1 &= ~SPI_CR1_MSTR; /*SELECT SLAVE MODE*/
 		
-		SPI1->CR1 |= SPI_CR2_RXNEIE;
-		NVIC_SetPriority(SPI1_IRQn,0);
+		SPI1->CR2 |= SPI_CR2_RXNEIE;
 		NVIC_EnableIRQ(SPI1_IRQn);
 		
 	}	
-	/*Not using RXNEIE/TXEIE for now.
-	pore korbo*/
-	
-	SPI1->CR2 = 0U;
 }
 
 
@@ -89,13 +84,16 @@ void SPI1_Send(char *data){
 
 char* SPI1_Receive(void){
 	char ret[100],ch = 0;
-	int idx = 0;
-	sendString("inside read\n");
+	int idx = 0,flag = 0;
 
 	while(ch != '@'){
 		while(!(SPI1->SR & SPI_SR_RXNE));
 		ch = (uint8_t)SPI1->DR;
-		if(ch != '@')ret[idx++] = ch;
+		if(ch != '@'){
+			if(flag)
+				ret[idx++] = ch;
+			flag = 1;
+		}
 		else break;
 	}
 	
