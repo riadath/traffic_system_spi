@@ -83,6 +83,7 @@ void SPI1_Send(char *data){
 }
 
 char* SPI1_Receive(void){
+//	sendString("inside read\n");
 	char ret[100],ch = 0;
 	int idx = 0,flag = 0;
 
@@ -96,7 +97,7 @@ char* SPI1_Receive(void){
 		}
 		else break;
 	}
-	
+//	sendString("end read\n");
 	ret[idx] = '\0';
 	
 	return ret;

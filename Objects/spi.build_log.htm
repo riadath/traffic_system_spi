@@ -22,32 +22,11 @@ Dialog DLL:      TCM.DLL V1.56.4.0
  
 <h2>Project:</h2>
 C:\Users\User\Documents\CODE_DRIVE\stm32\MCU\traffic_system_spi\spi.uvprojx
-Project File Date:  05/01/2023
+Project File Date:  05/07/2023
 
 <h2>Output:</h2>
 *** Using Compiler 'V6.19', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
 Rebuild target 'Target 1'
-compiling GPIO.c...
-compiling USART.c...
-assembling startup_stm32f446xx.s...
-SPI.c(1): warning: In file included from...
-./SPI.h(11): warning: In file included from...
-./TRAFFIC_SYSTEM.h(17): warning: In file included from...
-C:/Users/User/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include\stm32f4xx.h(11): warning: invalid UTF-8 in comment [-Winvalid-utf8]
-  *              - To use or not the peripheral<92>s drivers in application code(i.e. 
-                                               ^
-C:/Users/User/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include\stm32f4xx.h(12): warning: invalid UTF-8 in comment [-Winvalid-utf8]
-  *                code will be based on direct access to peripheral<92>s registers 
-                                                                    ^
-SPI.c(61): warning: variable 'temp' set but not used [-Wunused-but-set-variable]
-        uint8_t temp;
-                ^
-SPI.c(102): warning: address of stack memory associated with local variable 'ret' returned [-Wreturn-stack-address]
-        return ret;
-               ^~~
-4 warnings generated.
-compiling SPI.c...
-compiling SYS_INIT.c...
 CLOCK.c(32): warning: In file included from...
 C:/Users/User/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include\stm32f4xx.h(11): warning: invalid UTF-8 in comment [-Winvalid-utf8]
   *              - To use or not the peripheral<92>s drivers in application code(i.e. 
@@ -57,6 +36,13 @@ C:/Users/User/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/De
                                                                     ^
 2 warnings generated.
 compiling CLOCK.c...
+assembling startup_stm32f446xx.s...
+TRAFFIC_SYSTEM.c(131): warning: ISO C requires a translation unit to contain at least one declaration [-Wempty-translation-unit]
+^
+1 warning generated.
+compiling TRAFFIC_SYSTEM.c...
+compiling GPIO.c...
+compiling SYS_INIT.c...
 RTE/Device/STM32F446RETx/system_stm32f4xx.c(49): warning: In file included from...
 C:/Users/User/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include\stm32f4xx.h(11): warning: invalid UTF-8 in comment [-Winvalid-utf8]
   *              - To use or not the peripheral<92>s drivers in application code(i.e. 
@@ -66,38 +52,39 @@ C:/Users/User/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/De
                                                                     ^
 2 warnings generated.
 compiling system_stm32f4xx.c...
-TRAFFIC_SYSTEM.c(1): warning: In file included from...
-./TRAFFIC_SYSTEM.h(17): warning: In file included from...
+SPI.c(1): warning: In file included from...
+./SPI.h(17): warning: In file included from...
 C:/Users/User/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include\stm32f4xx.h(11): warning: invalid UTF-8 in comment [-Winvalid-utf8]
   *              - To use or not the peripheral<92>s drivers in application code(i.e. 
                                                ^
 C:/Users/User/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include\stm32f4xx.h(12): warning: invalid UTF-8 in comment [-Winvalid-utf8]
   *                code will be based on direct access to peripheral<92>s registers 
                                                                     ^
-2 warnings generated.
-compiling TRAFFIC_SYSTEM.c...
-main.c(5): warning: In file included from...
-./TRAFFIC_SYSTEM.h(17): warning: In file included from...
+SPI.c(61): warning: variable 'temp' set but not used [-Wunused-but-set-variable]
+        uint8_t temp;
+                ^
+SPI.c(103): warning: address of stack memory associated with local variable 'ret' returned [-Wreturn-stack-address]
+        return ret;
+               ^~~
+4 warnings generated.
+compiling SPI.c...
+compiling USART.c...
+main.c(6): warning: In file included from...
+./SPI.h(17): warning: In file included from...
 C:/Users/User/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include\stm32f4xx.h(11): warning: invalid UTF-8 in comment [-Winvalid-utf8]
   *              - To use or not the peripheral<92>s drivers in application code(i.e. 
                                                ^
 C:/Users/User/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include\stm32f4xx.h(12): warning: invalid UTF-8 in comment [-Winvalid-utf8]
   *                code will be based on direct access to peripheral<92>s registers 
                                                                     ^
-main.c(125): warning: unused variable 'gpio_config' [-Wunused-variable]
-    GPIO_InitTypeDef gpio_config;
-                     ^
-main.c(153): warning: function 'mainLoop' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
+main.c(305): warning: function 'mainLoop' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
 void mainLoop(void){
                    ^
-main.c(219): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
-    GPIO_InitTypeDef gpio_config;
-                     ^
-5 warnings generated.
+3 warnings generated.
 compiling main.c...
 linking...
-Program Size: Code=3070 RO-data=562 RW-data=0 ZI-data=1744  
-".\Objects\spi.axf" - 0 Error(s), 15 Warning(s).
+Program Size: Code=19044 RO-data=1552 RW-data=32 ZI-data=2584  
+".\Objects\spi.axf" - 0 Error(s), 12 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -128,7 +115,7 @@ Package Vendor: Keil
       Include file:  Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
       Source file:   Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/arm/startup_stm32f446xx.s
       Source file:   Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/system_stm32f4xx.c
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:00
 </pre>
 </body>
 </html>
