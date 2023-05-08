@@ -262,19 +262,21 @@ void USART2_IRQHandler(void){
 
 
 
+
 void SPI1_IRQHandler(void){
 	
 	SPI1->CR2 &= ~SPI_CR2_RXNEIE;
-
-	rcv_str = SPI1_Receive();
+	
+	if(SPI1->SR & SPI_SR_RXNE)
+		rcv_str = SPI1_Receive();
 	
 	
 	if(strlen(rcv_str) != 0){
 		sendString("RCV ::: ");
 		sendString(rcv_str);
 		sendString(" :::\n");
-        strcpy(input_buff,rcv_str);
-        parseCommand(input_buff);
+		strcpy(input_buff,rcv_str);
+		parseCommand(input_buff);
 	}
 	
 	SPI1->CR2 |= SPI_CR2_RXNEIE;
@@ -342,7 +344,7 @@ void mainLoop(void){
 
 int main(void)
 {   
-	uint8_t temp = 1;
+	uint8_t temp = 0;
 	
 	init();
 	
@@ -370,7 +372,7 @@ int main(void)
 				sendString(input_buff);
 				sendString(" :::\n");
 				
-				SPI1_Send("#");
+//				SPI1_Send("#");
 				SPI1_Send(input_buff);
 				
 				strcpy(input_buff,"");

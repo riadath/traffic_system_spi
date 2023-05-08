@@ -26,49 +26,7 @@ Project File Date:  05/07/2023
 
 <h2>Output:</h2>
 *** Using Compiler 'V6.19', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
-Rebuild target 'Target 1'
-CLOCK.c(32): warning: In file included from...
-C:/Users/User/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include\stm32f4xx.h(11): warning: invalid UTF-8 in comment [-Winvalid-utf8]
-  *              - To use or not the peripheral<92>s drivers in application code(i.e. 
-                                               ^
-C:/Users/User/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include\stm32f4xx.h(12): warning: invalid UTF-8 in comment [-Winvalid-utf8]
-  *                code will be based on direct access to peripheral<92>s registers 
-                                                                    ^
-2 warnings generated.
-compiling CLOCK.c...
-assembling startup_stm32f446xx.s...
-TRAFFIC_SYSTEM.c(131): warning: ISO C requires a translation unit to contain at least one declaration [-Wempty-translation-unit]
-^
-1 warning generated.
-compiling TRAFFIC_SYSTEM.c...
-compiling GPIO.c...
-compiling SYS_INIT.c...
-RTE/Device/STM32F446RETx/system_stm32f4xx.c(49): warning: In file included from...
-C:/Users/User/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include\stm32f4xx.h(11): warning: invalid UTF-8 in comment [-Winvalid-utf8]
-  *              - To use or not the peripheral<92>s drivers in application code(i.e. 
-                                               ^
-C:/Users/User/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include\stm32f4xx.h(12): warning: invalid UTF-8 in comment [-Winvalid-utf8]
-  *                code will be based on direct access to peripheral<92>s registers 
-                                                                    ^
-2 warnings generated.
-compiling system_stm32f4xx.c...
-SPI.c(1): warning: In file included from...
-./SPI.h(17): warning: In file included from...
-C:/Users/User/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include\stm32f4xx.h(11): warning: invalid UTF-8 in comment [-Winvalid-utf8]
-  *              - To use or not the peripheral<92>s drivers in application code(i.e. 
-                                               ^
-C:/Users/User/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include\stm32f4xx.h(12): warning: invalid UTF-8 in comment [-Winvalid-utf8]
-  *                code will be based on direct access to peripheral<92>s registers 
-                                                                    ^
-SPI.c(61): warning: variable 'temp' set but not used [-Wunused-but-set-variable]
-        uint8_t temp;
-                ^
-SPI.c(103): warning: address of stack memory associated with local variable 'ret' returned [-Wreturn-stack-address]
-        return ret;
-               ^~~
-4 warnings generated.
-compiling SPI.c...
-compiling USART.c...
+Build target 'Target 1'
 main.c(6): warning: In file included from...
 ./SPI.h(17): warning: In file included from...
 C:/Users/User/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include\stm32f4xx.h(11): warning: invalid UTF-8 in comment [-Winvalid-utf8]
@@ -77,14 +35,14 @@ C:/Users/User/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/De
 C:/Users/User/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include\stm32f4xx.h(12): warning: invalid UTF-8 in comment [-Winvalid-utf8]
   *                code will be based on direct access to peripheral<92>s registers 
                                                                     ^
-main.c(305): warning: function 'mainLoop' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
+main.c(307): warning: function 'mainLoop' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
 void mainLoop(void){
                    ^
 3 warnings generated.
 compiling main.c...
 linking...
-Program Size: Code=19044 RO-data=1552 RW-data=32 ZI-data=2584  
-".\Objects\spi.axf" - 0 Error(s), 12 Warning(s).
+Program Size: Code=19044 RO-data=1548 RW-data=32 ZI-data=2584  
+".\Objects\spi.axf" - 0 Error(s), 3 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -110,12 +68,12 @@ Package Vendor: Keil
    * Component: ARM::CMSIS:CORE:5.6.0
 
    * Component: Keil::Device:Startup:2.6.3
+      Include file:  Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
       Source file:   MDK/Device/Source/ARM/STM32F446xx_OPT.s
       Source file:   MDK/Device/Source/ARM/STM32F4xx_OTP.s
-      Include file:  Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
       Source file:   Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/arm/startup_stm32f446xx.s
       Source file:   Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/system_stm32f4xx.c
-Build Time Elapsed:  00:00:00
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>

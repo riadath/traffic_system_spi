@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\spi.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\spi.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6190004: Last Updated: Sun May  7 20:02:36 2023
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6190004: Last Updated: Mon May  8 14:57:22 2023
 <BR><P>
 <H3>Maximum Stack Usage =       1104 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1365,7 +1365,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[2d]"></a>SPI1_IRQHandler</STRONG> (Thumb, 132 bytes, Stack size 16 bytes, main.o(.text.SPI1_IRQHandler))
+<P><STRONG><a name="[2d]"></a>SPI1_IRQHandler</STRONG> (Thumb, 156 bytes, Stack size 16 bytes, main.o(.text.SPI1_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 588 + Unknown Stack Size
 <LI>Call Chain = SPI1_IRQHandler &rArr; parseCommand &rArr; sscanf &rArr; __vfscanf_char &rArr; __vfscanf &rArr; _scanf_real &rArr; _scanf_really_real &rArr; _fp_value &rArr; _btod_etento &rArr; _btod_emul &rArr; _e2e
 </UL>
@@ -1377,7 +1377,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f446xx.o(RESET)
 </UL>
-<P><STRONG><a name="[e2]"></a>SPI1_Receive</STRONG> (Thumb, 112 bytes, Stack size 112 bytes, spi.o(.text.SPI1_Receive))
+<P><STRONG><a name="[e2]"></a>SPI1_Receive</STRONG> (Thumb, 104 bytes, Stack size 112 bytes, spi.o(.text.SPI1_Receive))
 <BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = SPI1_Receive
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI1_IRQHandler
@@ -1482,7 +1482,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init
 </UL>
 
-<P><STRONG><a name="[9e]"></a>main</STRONG> (Thumb, 196 bytes, Stack size 24 bytes, main.o(.text.main))
+<P><STRONG><a name="[9e]"></a>main</STRONG> (Thumb, 182 bytes, Stack size 24 bytes, main.o(.text.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 1104 + Unknown Stack Size
 <LI>Call Chain = main &rArr; mainLoop &rArr; tim5_delay &rArr; show_traffic_info &rArr; sprintf &rArr; _printf_char_common &rArr; __printf
 </UL>
