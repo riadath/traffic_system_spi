@@ -238,8 +238,6 @@ void tim5_delay(uint16_t ms){
 	}
 }
 
-
-
 void getString(void){
     uint8_t ch,idx = 0;
     ch = UART_GetChar(USART2);
@@ -257,6 +255,7 @@ void USART2_IRQHandler(void){
     getString();
     USART2->CR1 |= (USART_CR1_RXNEIE);
 }
+
 
 
 
@@ -304,6 +303,7 @@ void init(void){
 	//timer start
 	TIM2->CNT = 0;
 }
+
 void mainLoop(void){
     while(true){
         runningTime = 0;
@@ -344,7 +344,7 @@ void mainLoop(void){
 
 int main(void)
 {   
-	uint8_t temp = 0;
+	uint8_t temp = 1;
 	
 	init();
 	
@@ -357,9 +357,7 @@ int main(void)
 	
 	if(!temp){
 		sendString("Inside Read Loop\n");
-		while(1){
-			mainLoop();
-		}
+		mainLoop();
 	}
 	
 	else{

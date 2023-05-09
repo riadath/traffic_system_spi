@@ -1,5 +1,7 @@
 #include "SPI.h"
 
+static uint32_t timeout_ms = 1000;
+
 void SPI1_Config(bool ifMaster){
 	/*
 	mode == true => Master
@@ -31,7 +33,7 @@ void SPI1_Config(bool ifMaster){
 
 	
 	if(ifMaster){
-		SPI1->CR1 |= 2 << SPI_CR1_BR_Pos; /*SET BAUDE RATE*/
+		SPI1->CR1 |= 7 << SPI_CR1_BR_Pos; /*SET BAUDE RATE*/
 		SPI1->CR1 |= SPI_CR1_SSM | SPI_CR1_SSI; /*SOFTWARE SLAVE MANAGEMENT*/
 		
 
@@ -51,7 +53,7 @@ void SPI1_Config(bool ifMaster){
 		
 		SPI1->CR2 |= SPI_CR2_RXNEIE;
 		NVIC_EnableIRQ(SPI1_IRQn);
-		
+		NVIC_DisableIRQ(USART2_IRQn);
 	}	
 }
 
@@ -60,7 +62,6 @@ void SPI1_Send(char *data){
 	
 	uint8_t temp;
 	/*SEND ALL DATA BITS*/
-	sendString("inside send\n");
 	
 	
 	for(int i = 0;i < (int)strlen(data);i++){
@@ -79,20 +80,24 @@ void SPI1_Send(char *data){
 	
 	temp = (uint8_t)SPI1->DR;
 	temp = (uint8_t)SPI1->SR;
+	sendString("Data Sent\n");
 
 }
 
 char* SPI1_Receive(void){
 	char ret[100],ch = 0;
-	int idx = 0,flag = 0;
+	int idx = 0;
 
 	while(ch != '@'){
-		while(!(SPI1->SR & SPI_SR_RXNE));
+		TIM3->CNT = 0;
+		while(!(SPI1->SR & SPI_SR_RXNE)){
+			if(TIM3->CNT > timeout_ms){
+				return "";
+			}
+		}
 		ch = (uint8_t)SPI1->DR;
 		if(ch != '@'){
-//			if(flag)
-				ret[idx++] = ch;
-			flag = 1;
+			ret[idx++] = ch;
 		}
 		else break;
 	}
